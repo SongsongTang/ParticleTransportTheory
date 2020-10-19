@@ -34,4 +34,9 @@ uicgammax = inc_gamma(0, x)
 phi = 2 * np.pi * (2 - np.exp(x - 1) - np.exp(-x) + (1 - x) * uicgamma1 + x * uicgammax)
 phi_x = np.concatenate((x, phi)).reshape(2, 100).transpose()
 np.savetxt("phi_x.txt", phi_x)
+# gamma_x
+x = np.linspace(0, 10, 200)
+uicgamma_x = inc_gamma(0, x)
+ux = np.concatenate((x, uicgamma_x)).reshape(2, 200).transpose()
+np.savetxt("gamma_x.txt", ux)
 
