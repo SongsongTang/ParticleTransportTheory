@@ -1,0 +1,87 @@
+\documentclass[12pt]{ctexart}
+% \usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{a4paper}
+\usepackage{titlesec}
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+\usepackage{booktabs}
+\usepackage{float}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\title{粒子输运理论基础第二次作业}
+\author{汤松松 }
+\date{2020.09.28}
+
+\begin{document}
+
+\maketitle
+
+\section{坐标系体积积分}
+\subsection{微分}
+\noindent
+直角坐标系:\quad$d V = d x d y d z$\newline
+柱坐标系:\quad$d V = r d\theta d r dz$\newline
+球坐标系:\quad$d V = r d\theta r\sin \theta d\psi d r = r ^ 2 \sin \theta d\theta d\psi d r$
+\subsection{积分}
+\noindent
+直角坐标系（边长为2的正方体）:
+\begin{align*}
+    \int d V & = \int _{-1} ^{1} \int _{-1} ^{1} \int _{-1} ^{1} dx dy dz \\ & = 2 \times 2 \times 2 \\ & = 8
+\end{align*}
+柱坐标系（底面半径为1，高为2的圆柱体）:
+\begin{align*}
+    \int d V & = \int _{-1} ^{1} \int _{0} ^{1} \int _{0} ^{2\pi} r d\theta dr dz \\ & = 2 \pi \times \frac{1}{2} \times 2 \\ & = 2 \pi
+\end{align*}
+球坐标系（半径为1的球体）:
+\begin{align*}
+    \int d V & = \int _{0} ^{1} \int _{0} ^{2\pi} \int _{0} ^{\pi} r^2 \sin \theta d\theta d\psi dr \\ & = \int _{0} ^{1} \int _{0} ^{2\pi} 2r^2 d\psi dr \\ & = \int _{0} ^{1} 4\pi r^2 dr \\ & = \frac{4}{3} \pi
+\end{align*}
+\section{Streaming Operator}
+\begin{table}[h]
+    \centering
+    \caption{Streaming Operator in Cartesian Geometry}
+    \begin{tabular}{cccl}
+    \toprule
+       Dimensions  & \tabincell{c}{Spatial \\ Variables} & \tabincell{c}{Angular \\ Variables} & \multicolumn{1}{c}{$\hat{\Omega}\cdot\bar{\nabla}\psi$} \\
+    \midrule
+    1 & x & $\mu$ & $ \mu \frac{ \partial  \psi}{\partial x} $ \\
+    2 & x,y & $\mu$ , $\eta$ & $ \mu \frac{\partial \psi}{\partial x} + \eta \frac{\partial \psi}{\partial y}$ \\
+    3 & x,y,z & $\mu$, $\eta, \xi$ & $ \mu \frac{ \partial \psi}{\partial x} + \eta \frac{\partial \psi}{\partial y} + \xi \frac{\partial \psi}{\partial z}$ \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:my_label1}
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{Streaming Operator in Spherical Geometry in Conservation Form}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{lll}
+    \toprule
+    \tabincell{c}{Spatial \\ Variables} & \tabincell{c}{Angular \\ Variables} & \multicolumn{1}{c}{$ \hat{\Omega}\cdot\bar{\nabla}\psi$} \\
+    \midrule
+    $\rho$ & $\mu$ & $\frac{\mu}{\rho^2}\frac{\partial}{\partial \rho}(\rho^2\psi) + \frac{1}{\rho}\frac{\partial}{\partial \mu}[(1-\mu^2)\psi]$ \\
+    $\rho, \vartheta$ & $\mu, \omega$ & $\frac{\mu}{\rho^2}\frac{\partial}{\partial \rho}(\rho^2 \psi) + \frac{\eta}{\rho\sin\vartheta}\frac{\partial}{\partial \vartheta}(\sin\vartheta\psi) + \frac{1}{\rho}\frac{\partial}{\partial \mu}[(1-\mu^2)\psi]+\frac{\cot\vartheta}{\rho}\frac{\partial}{\partial \omega}(\xi\psi)$ \\
+    $\rho, \vartheta, \varphi$ & $\mu, \omega$ & $\frac{\mu}{\rho^2}\frac{\partial}{\partial \rho}(\rho^2\psi)+\frac{\eta}{\rho\sin\vartheta}\frac{\partial}{\partial\vartheta}(\sin\vartheta\psi)+\frac{\xi}{\rho\sin\vartheta}\frac{\partial\psi}{\partial\varphi} + \frac{1}{\rho}\frac{\partial}{\partial\mu}[(1-\mu^2)\psi] + \frac{\cot\vartheta}{\rho}\frac{\partial}{\partial\omega}(\xi\psi)$ \\
+    \multicolumn{3}{l}{$\eta = (1-\mu^2)^{1/2}\cos\omega;\xi = (1-\mu^2)^{1/2}\sin\omega$} \\
+    \bottomrule
+    \end{tabular}}
+    \label{tab:my_label2}
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{Streaming Operator in Cylindrical Coordinates in Conservation Form}
+    \begin{tabular}{lll}
+    \toprule
+    \tabincell{c}{Spatial \\ Variables} & \tabincell{c}{Angular \\ Variables} & \multicolumn{1}{c}{$\hat{\Omega}\cdot\bar{\nabla}\psi$} \\
+    \midrule
+    $\rho$ & $\omega, \xi$ & $\frac{\mu}{\rho}\frac{\partial(\rho\psi)}{\partial\rho} - \frac{1}{\rho}\frac{\partial(\eta\psi)}{\partial\omega}$ \\
+    $\rho, \vartheta$ & $\omega, \xi$ & $\frac{\mu}{\rho}\frac{\partial(\rho\psi)}{\partial\rho} + \frac{\eta}{\rho}\frac{\partial\psi}{\partial\vartheta} - \frac{1}{\rho}\frac{\partial(\eta\psi)}{\partial\omega}$ \\
+    $\rho, z$ & $\omega, \xi$ & $\frac{\mu}{\rho}\frac{\partial(\rho\psi)}{\partial\rho} + \xi\frac{\partial\psi}{\partial z} - \frac{1}{\rho} \frac{\partial(\eta \psi)}{\partial \omega}$ \\
+    $\rho, \vartheta, z$ & $\omega, \xi$ & $\frac{\mu}{\rho}\frac{\partial(\rho \psi)}{\partial \rho} + \frac{\eta}{\rho} \frac{\partial \psi}{\partial \vartheta} + \xi \frac{\partial \psi}{\partial z} - \frac{1}{\rho}\frac{\partial(\eta \psi)}{\partial \omega}$ \\
+    \multicolumn{3}{l}{$\mu = (1 - \xi^2)^{1/2}\cos\omega; \eta = (1 - \xi^2)^{1/2}\sin\omega$} \\
+    \bottomrule
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+\end{document}
